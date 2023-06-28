@@ -1,0 +1,70 @@
+<br><br>
+
+<div>
+  <label for="color1">Color 1:</label>
+  <select [(ngModel)]="primerColor">
+    <option *ngFor="let color of colores" [value]="color.valor" [style.background-color]="color.hex">{{ color.nombre }}
+    </option>
+  </select>
+</div>
+
+<br><br>
+
+<div>
+  <label for="color2">Color 2:</label>
+  <select [(ngModel)]="segundoColor">
+    <option *ngFor="let color of colores" [value]="color.valor" [style.background-color]="color.hex">{{ color.nombre }}
+    </option>
+  </select>
+</div>
+
+<br><br>
+
+<div>
+  <label for="color3">Multiplicador</label>
+  <select id="color3" [(ngModel)]="multiplicador">
+    <option *ngFor="let color of colores" [value]="color.valor" [style.background-color]="color.hex">{{
+      color.nombre }}</option>
+  </select>
+</div>
+
+<br><br>
+
+<input type="radio" name="tole" [(ngModel)]="tolerancia" value="Oro">
+<label for="">Oro</label> &nbsp;&nbsp;&nbsp;
+
+<input type="radio" name="tole" [(ngModel)]="tolerancia" value="Plata">
+<label for="">Plata</label>
+
+<br><br>
+
+<button (click)="calculo()">Calcular</button>
+
+<br><br><br>
+
+<!-- Genera una tabla -->
+<table class="table">
+  <thead>
+    <tr>
+      <th>Color</th>
+      <th>Valor</th>
+      <th>Multiplicador</th>
+      <th>Tolerancia</th>
+      <th>Nominal</th>
+      <th>Maximo</th>
+      <th>Minimo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td [style.background-color]="colorHexCampo1">{{ primerColor }}</td>
+      <td [style.background-color]="colorHexCampo2">{{ segundoColor }}</td>
+      <td [style.background-color]="colorHexMulti">{{ multiplicador }}</td>
+      <td [style.background-color]="colorHexTole">{{ valorTole }}</td>
+      <td>{{ valorNominal }}</td>
+      <td>{{ maximo }}</td>
+      <td>{{ minimo }}</td>
+    </tr>
+  </tbody>
+
+  <br><br><br>

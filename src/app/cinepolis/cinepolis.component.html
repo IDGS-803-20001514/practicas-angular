@@ -1,0 +1,32 @@
+<div class="contenedor">
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="nombre"  placeholder="Nombre" type="text">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="cantidadCompradores" placeholder="Cantidad de Compradores" type="number">
+  </mat-form-field>
+
+
+  <label>Si tienes tarjeta obtendras un 10% mas de descuento</label>
+
+  <mat-radio-group name="opciones" [(ngModel)]="default">
+
+    <mat-radio-button *ngFor="let op of desision" name="opciones" [value]="op" style="margin:10px;">
+
+      {{ op }}
+
+    </mat-radio-button>
+
+  </mat-radio-group>
+
+  <mat-form-field>
+    <input matInput [(ngModel)]="cantidadBoletos" placeholder="Cantidad de Boletos" type="number">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="calcularPrecio()">Comprar</button>
+
+  <h1>{{ nombre }} tienes que pagar {{ total }}</h1>
+
+</div>
