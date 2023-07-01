@@ -7,10 +7,12 @@ import { CinepolisModule } from './cinepolis/cinepolis.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PuntosModule } from './puntos/puntos.module';
 import { ModuloResitenciasModule } from './modulo-resitencias/modulo-resitencias.module';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import { ModuloResitenciasModule } from './modulo-resitencias/modulo-resitencias
     CinepolisModule,
     PuntosModule,
     ModuloResitenciasModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
