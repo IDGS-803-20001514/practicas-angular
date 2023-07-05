@@ -1,0 +1,192 @@
+<div class="container" id="contenedorPrincipal">
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="pizerriaForm">
+
+    <div class="row">
+
+      <div class="col-3">
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" formControlName="nombre" id="nombre" name="nombre"
+            placeholder="Nombre" required>
+          <label for="floatingInput">Nombre</label>
+        </div>
+
+      </div>
+
+      <div class="col-3">
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" formControlName="direccion" id="direccion" name="direccion"
+            placeholder="Direccion" required>
+          <label for="floatingInput">Direccion</label>
+        </div>
+      </div>
+
+      <div class="col-3">
+
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" formControlName="telefono" id="telefono" name="telefono"
+            placeholder="Telefono" required minlength="10" maxlength="10">
+          <label for="floatingInput">Telefono</label>
+        </div>
+      </div>
+
+      <div class="col-3">
+
+        <mat-form-field>
+          <mat-label>Fecha De Compra</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-4">
+
+        <h2>Selecciona el Tamaño:</h2>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tamanio" value="Pequeña">
+          <label class="form-check-label">
+            Pequeña $40
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tamanio" value="Mediana">
+          <label class="form-check-label">
+            Mediana $80
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="tamanio" value="Grande">
+          <label class="form-check-label">
+            Grande $120
+          </label>
+        </div>
+
+      </div>
+
+      <div class="col-4">
+        <div>
+          <h2>Selecciona los ingredientes:</h2>
+          <label>
+            <input type="checkbox" name="ingredientes" value="Jamon">
+            Jamon $10
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" name="ingredientes" value="Piña">
+            Piña $10
+          </label>
+          <br>
+          <label>
+            <input type="checkbox" name="ingredientes" value="Champiñones">
+            Champiñones $10
+          </label>
+
+        </div>
+
+      </div>
+
+      <div class="col-4">
+
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" formControlName="cantidad" id="cantidad" name="cantidad"
+            placeholder="Cantidad" required>
+          <label for="cantidad">Numero de Pizzas</label>
+        </div>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-warning me-md-2" type="submit">Agregar</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+  <br><br><br>
+
+  <div class="row">
+
+    <div class="col-6">
+
+      <form (ngSubmit)="generarOrden()">
+
+        <!-- Genera un tabla con lo siguientes campos ID, Tamaño, Ingredientes, Num.Pizzas y SubTotal -->
+        <table class="table table-striped">
+
+          <thead>
+            <tr align="center">
+              <th scope="col">#</th>
+              <th scope="col">Tamaño</th>
+              <th scope="col">Ingredientes</th>
+              <th scope="col">Num.Pizzas</th>
+              <th scope="col">SubTotal</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let pizza of arrPizzas; let i = index" align="center">
+              <th scope="row">{{ i }}</th>
+              <td>{{ pizza.tamanio }}</td>
+              <td>{{ pizza.ingredientes }}</td>
+              <td>{{ pizza.cantidad }}</td>
+              <td>{{ pizza.subTotal }}</td>
+              <td>
+                <button class="btn btn-danger me-md-2" type="submit" (click)="eliminar(i)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+
+        <br><br><br>
+
+        <!-- Botton en la parte inferior derecha -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-success me-md-2" type="submit">Generar Orden</button>
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="col-6">
+
+      <div class="card">
+        <h3 class="card-header" align="center">Resumen de Venta</h3>
+        <div class="card-body">
+
+          <div class="row" *ngFor="let pizza of arrPizzas;" align="center">
+            <div class="col-6">
+              <b>Nombre:</b> <label>{{ pizza.nombre }}</label> <br><br>
+            </div>
+            <div class="col-6">
+              <b>SubTotal:</b>&nbsp;<label>{{ pizza.subTotal | currency }}</label> <br><br>
+            </div>
+          </div>
+
+          <div class="row" align="center">
+            <div class="col-12">
+              <b class="totalVentas">Total:</b>&nbsp;<label class="precioFinal">{{ totalVentas | currency }}</label> <br><br>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

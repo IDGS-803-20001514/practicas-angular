@@ -7,6 +7,7 @@ import { CinepolisModule } from './cinepolis/cinepolis.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PuntosModule } from './puntos/puntos.module';
 import { ModuloResitenciasModule } from './modulo-resitencias/modulo-resitencias.module';
+import { PizzeriaModule } from './pizzeria/m-pizzas/m-pizzas.module';
 import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MenuComponent } from './menu/menu.component';
     CinepolisModule,
     PuntosModule,
     ModuloResitenciasModule,
+    PizzeriaModule,
     BrowserAnimationsModule,
     AppRoutingModule
   ],
